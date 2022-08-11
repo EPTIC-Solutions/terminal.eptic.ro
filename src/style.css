@@ -1,0 +1,205 @@
+:root {
+  font-family: cursor, monospace;
+  line-height: 24px;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#app {
+  margin: 0 auto;
+  padding: 0.5rem;
+}
+
+p {
+  margin-block-end: 0;
+  margin-block-start: 0;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+.cursor {
+  font-size: 12px;
+  color: #73abad;
+  background-color: #73abad;
+  position: relative;
+  opacity: 1;
+  height: 1.5em;
+  width: 10px;
+  max-width: 10px;
+  transform: translateY(4px);
+  overflow: hidden;
+  text-indent: -5px;
+  display: inline-block;
+  text-decoration: blink;
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+#line > .command-text {
+  padding: 0;
+  outline: 0;
+  border: 0;
+  background: transparent;
+  font-family: cursor, monospace;
+  font-size: 16px;
+  color: #bdbdbd;
+  cursor: default;
+  pointer-events: none;
+  font-weight: 600;
+  width: 100%;
+  margin-left: 0.25rem;
+}
+
+#line::before {
+  content: attr(data-line);
+}
+
+#line {
+  display: flex;
+  color: #519975;
+}
+
+.loading > #line {
+  display: none;
+}
+
+#loader .loader::before {
+  content: "";
+  color: #ffffff;
+  animation: loader 0.5s infinite;
+}
+
+@keyframes loader {
+  0% {
+    content: "⣾";
+  }
+  14.5% {
+    content: "⣽";
+  }
+  30% {
+    content: "⣻";
+  }
+  42% {
+    content: "⢿";
+  }
+  56% {
+    content: "⡿";
+  }
+  71% {
+    content: "⣟";
+  }
+  85% {
+    content: "⣯";
+  }
+  100% {
+    content: "⣷";
+  }
+}
+
+[hidden] {
+  display: none !important;
+}
+
+#terminal > .command-not-found, #terminal > .command {
+  white-space: pre;
+  display: block;
+  line-height: 1.3em;
+  margin: 0;
+  overflow: hidden;
+  margin: 0;
+  letter-spacing: 0.05em;
+  animation: typing 0.5s steps(30, end);
+}
+
+.command {
+  color: #519975
+}
+
+.command-not-found {
+  color: #ba3035;
+}
+
+.color2 {
+  color: #B89076
+}
+
+.no-animation {
+  animation: typing 0 steps(30, end);
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.help-command {
+  display: flex;
+  padding-left: 25px;
+  color: #519975
+}
+
+.help-command > .command-text {
+  min-width: 300px;
+}
