@@ -52,14 +52,17 @@ const loadCommands = () => {
 
 type Line = {
   line: string;
-  classname?: string;
+  classname?: string | Array<string>;
 };
 
 const lines: Line[] = [];
 
-const writeLine = (line: string, classname: string | undefined = undefined) => {
+const writeLine = (
+  line: string,
+  classname: string | Array<string> | undefined = undefined
+) => {
   lines.push({ line, classname });
-  setTimeout(doWriteLine, 100 * lines.length);
+  setTimeout(doWriteLine, 50 * lines.length);
 };
 
 const doWriteLine = () => {
@@ -68,7 +71,14 @@ const doWriteLine = () => {
     const newLine = document.createElement("p");
     newLine.innerHTML = lineObject.line;
     if (lineObject.classname) {
-      newLine.classList.add(lineObject.classname);
+      if (Array.isArray(lineObject.classname)) {
+        lineObject.classname.forEach((classname) => {
+          newLine.classList.add(classname);
+        });
+      } else {
+        newLine.classList.add(lineObject.classname);
+      }
+      newLine.classList.add();
     } else {
       newLine.classList.add("command");
     }
@@ -76,5 +86,13 @@ const doWriteLine = () => {
     return;
   }
 };
+
+addEventListener("animationend", (event) => {
+  if (event.animationName !== "typing") {
+    return;
+  }
+  console.log(event);
+  (event.target as HTMLParagraphElement).style.overflow = "overlay";
+});
 
 export { commands, helpCommands, loadCommands, writeLine };

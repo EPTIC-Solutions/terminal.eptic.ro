@@ -169,11 +169,11 @@ button:focus-visible {
   animation: typing 0.5s steps(30, end);
 }
 
-.command {
+#terminal > .command {
   color: #519975
 }
 
-.command-not-found {
+#terminal > .command-not-found {
   color: #ba3035;
 }
 
@@ -202,4 +202,19 @@ button:focus-visible {
 
 .help-command > .command-text {
   min-width: 300px;
+}
+
+body {
+  font-size: 11px;
+}
+
+@media screen and (max-width: 600px) {
+  #terminal > .command > .banner {
+    font-size: 6px;
+    line-height: initial;
+  }
+
+  .command-text {
+    font-size: 11px !important;
+  }
 }
