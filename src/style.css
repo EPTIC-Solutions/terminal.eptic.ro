@@ -170,6 +170,11 @@ button:focus-visible {
   animation: typing 0.5s steps(30, end);
 }
 
+#terminal > .social-command, #terminal > .help-command {
+  white-space: pre;
+  animation: typing 0.5s steps(30, end);
+}
+
 #terminal > .command {
   color: #519975
 }
@@ -195,7 +200,7 @@ button:focus-visible {
   }
 }
 
-.help-command {
+.social-command, .help-command {
   display: flex;
   padding-left: 25px;
   color: #519975
@@ -205,11 +210,46 @@ button:focus-visible {
   min-width: 300px;
 }
 
+.social-command > .command-text {
+  min-width: 200px;
+}
+
 body {
-  font-size: 11px;
+  font-size: 16px;
+}
+
+@media screen and (max-width: 930px) {
+  body {
+    font-size: 12px;
+  }
+
+  #terminal > .command > .banner {
+    font-size: 9px;
+    line-height: initial;
+  }
+
+  .command-text {
+    font-size: 11px !important;
+  }
+
+  .help-command > .command-text {
+    min-width: 100px;
+  }
+
+  .social-command > .command-text {
+    min-width: 150px;
+  }
+
+  .social-command {
+    padding-left: 15px;
+  }
 }
 
 @media screen and (max-width: 600px) {
+  body {
+    font-size: 11px;
+  }
+
   #terminal > .command > .banner {
     font-size: 6px;
     line-height: initial;
