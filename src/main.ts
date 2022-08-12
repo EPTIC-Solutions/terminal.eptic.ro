@@ -110,6 +110,16 @@ const bootstrap = async () => {
     commandInput.focus();
   });
 
+  let touchStart = 0;
+  window.addEventListener("touchstart", function (e) {
+    touchStart = e.timeStamp;
+  });
+  window.addEventListener("touchend", function (e) {
+    if (e.timeStamp - touchStart < 250) {
+      commandInput.focus();
+    }
+  });
+
   let mutationTimeout: number | null;
   const mutation = new MutationObserver(() => {
     $<HTMLDivElement>("#line").hidden = true;
