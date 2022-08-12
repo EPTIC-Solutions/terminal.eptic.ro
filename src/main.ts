@@ -43,8 +43,20 @@ const commandsHistory = new CommandsHistory();
 
 let isUsingHistory = false;
 
+let inView = false;
+
+const intersectionObs = new IntersectionObserver((e) => {
+  inView = e[0]!.isIntersecting;
+});
+
+intersectionObs.observe(commandInput);
+
 const handleCommandInput = function (e: KeyboardEvent) {
   let index: string;
+
+  if (!inView) {
+    commandInput.scrollIntoView();
+  }
 
   switch (e.key) {
     case "Enter":
@@ -117,16 +129,17 @@ const bootstrap = async () => {
   });
 
   let mutationTimeout: number | null;
+  const line = $<HTMLDivElement>("#line");
   const mutation = new MutationObserver(() => {
-    $<HTMLDivElement>("#line").hidden = true;
+    line.hidden = true;
     if (mutationTimeout) {
       clearTimeout(mutationTimeout);
-      $<HTMLDivElement>("#line").hidden = false;
+      line.hidden = false;
       commandInput.focus();
-      $<HTMLDivElement>("#line").hidden = true;
+      line.hidden = true;
     }
     mutationTimeout = setTimeout(() => {
-      $<HTMLDivElement>("#line").hidden = false;
+      line.hidden = false;
       commandInput.value = "";
       commandInput.focus();
     }, 200);

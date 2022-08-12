@@ -91,7 +91,6 @@ addEventListener("animationend", (event) => {
   if (event.animationName !== "typing") {
     return;
   }
-  console.log(event);
   (event.target as HTMLParagraphElement).style.overflow = "overlay";
 });
 
