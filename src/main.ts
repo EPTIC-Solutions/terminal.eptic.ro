@@ -49,7 +49,7 @@ const handleCommandInput = function (e: KeyboardEvent) {
   switch (e.key) {
     case "Enter":
       isUsingHistory = false;
-      const input = commandInput.value.trim();
+      const input = commandInput.value.trim().toLocaleLowerCase();
 
       if (!input) {
         return;
