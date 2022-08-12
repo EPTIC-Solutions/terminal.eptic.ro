@@ -218,4 +218,8 @@ body {
   .command-text {
     font-size: 11px !important;
   }
+
+  .help-command > .command-text {
+    min-width: 100px;
+  }
 }
