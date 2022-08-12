@@ -106,10 +106,6 @@ const bootstrap = async () => {
     commandInput.focus();
   });
 
-  window.addEventListener("touchstart", function () {
-    commandInput.focus();
-  });
-
   let touchStart = 0;
   window.addEventListener("touchstart", function (e) {
     touchStart = e.timeStamp;
