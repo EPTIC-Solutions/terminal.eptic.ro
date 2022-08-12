@@ -111,7 +111,7 @@ const bootstrap = async () => {
     touchStart = e.timeStamp;
   });
   window.addEventListener("touchend", function (e) {
-    if (e.timeStamp - touchStart < 250) {
+    if (e.timeStamp - touchStart < 150) {
       commandInput.focus();
     }
   });
