@@ -9,13 +9,14 @@
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EPTIC - Terminal</title>
+    <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
+    <div id="loader">
+      Loading
+      <span class="loader"></span>
+    </div>
     <div id="app" class="loading">
-      <div id="loader">
-        Loading
-        <span class="loader"></span>
-      </div>
       <div id="terminal"></div>
       <div id="line" data-line="visitor@terminal.eptic.ro:~$" hidden>
         <input type="text" id="command-input" class="command-text" />

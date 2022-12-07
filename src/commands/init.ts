@@ -22,32 +22,18 @@ const registerCommand = (
 };
 
 const loadCommands = () => {
-  return new Promise<boolean>((resolve) => {
-    const modules = import.meta.glob("./*");
-    let length = Object.keys(modules).length;
+  const modules = import.meta.glob("./*", { eager: true });
 
-    for (const path in modules) {
-      modules[path]!().then((mod: any) => {
-        length--;
-        if (!mod.default) {
-          console.error(
-            "Module " + path + " does not export a default export."
-          );
-          return;
-        }
-        const formattedPath = path.replace(/^\.\//, "");
-        const commandName = formattedPath.replace(/\.[^/.]+$/, "");
-        registerCommand(
-          commandName,
-          mod.default as () => boolean,
-          mod.description
-        );
-        if (!length) {
-          resolve(true);
-        }
-      });
+  for (const path in modules) {
+    const mod = modules[path] as any;
+    if (!mod.default) {
+      console.error("Module " + path + " does not export a default export.");
+      return;
     }
-  });
+    const formattedPath = path.replace(/^\.\//, "");
+    const commandName = formattedPath.replace(/\.[^/.]+$/, "");
+    registerCommand(commandName, mod.default as () => boolean, mod.description);
+  }
 };
 
 type Line = {

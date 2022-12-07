@@ -1,4 +1,4 @@
-import "./style.css";
+// import "./style.css";
 import { $ } from "./globals";
 import "./commands/init";
 import { commands, loadCommands, writeLine } from "./commands/init";
@@ -110,7 +110,7 @@ const handleCommandInput = function (e: KeyboardEvent) {
 };
 
 const bootstrap = async () => {
-  await loadCommands();
+  loadCommands();
 
   commandInput.addEventListener("keydown", handleCommandInput);
 

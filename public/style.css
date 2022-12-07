@@ -118,7 +118,7 @@ button:focus-visible {
   color: #519975;
 }
 
-.loading > #line {
+#app.loading {
   display: none;
 }
 
